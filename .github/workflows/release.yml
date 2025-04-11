@@ -21,7 +21,7 @@ jobs:
         run: go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
 
       - name: Build Caddy with caddy-dns/cloudflare
-        run: xcaddy build --with github.com/caddy-dns/cloudflare
+        run: xcaddy build --with github.com/caddy-dns/cloudflare@master
 
       - name: Upload caddy as artifact
         uses: actions/upload-artifact@v4
