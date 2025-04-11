@@ -1,0 +1,30 @@
+name: Release
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          check-latest: true
+
+      - name: Install xcaddy
+        run: go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
+
+      - name: Build Caddy with caddy-dns/cloudflare
+        run: xcaddy build --with github.com/caddy-dns/cloudflare
+
+      - name: Check files
+        run: ls
+
+      # - name: Release
+      #   uses: softprops/action-gh-release@v2
