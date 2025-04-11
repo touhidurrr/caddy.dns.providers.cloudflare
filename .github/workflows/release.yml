@@ -9,6 +9,9 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
@@ -23,5 +26,6 @@ jobs:
       - name: Upload caddy as artifact
         uses: actions/upload-artifact@v4
         with:
+          name: caddy-cloudflare
+          compression-level: 9
           path: caddy
-          compression-level: 0
