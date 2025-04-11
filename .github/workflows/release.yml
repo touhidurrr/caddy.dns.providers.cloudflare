@@ -23,4 +23,5 @@ jobs:
       - name: Upload caddy as artifact
         uses: actions/upload-artifact@v4
         with:
-          path: ./caddy
+          path: caddy
+          compression-level: 0
